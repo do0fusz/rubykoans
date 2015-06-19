@@ -28,3 +28,12 @@ end
 
 # 1 no negative's or 0's  ( <=0 )
 # all side's can be even in length 
+# 
+# 
+# 
+# def triangle(*args)
+# 	args.sort! 
+# 	raise TriangleError if args[0]+args[1] <= args[2]|| args[0] <= 0
+# 	[nil, :equilateral, :isosceles, :scalene][args.uniq.size]
+# end
+# 	

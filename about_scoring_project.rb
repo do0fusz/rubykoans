@@ -29,9 +29,51 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+  
+##  Note 1 uncomment this for my first approach:
+# def first_approach 
+#   counted = {}
+#   dice.each do |v|
+#     counted[v] = dice.count[v]
+#   end  
+# end
+# 
+# Note 2: since the count is sequential, using a hash from 0 is perfect.
+# Note 3: instead of many if's and cases i wanted a simpler readable solution. 
+# Note 4: todo -> make it a Case statement 
+
+
 def score(dice)
-  # You need to write this method
+  # note 3
+  points = 0  
+  ones = [0, 100,200,1000,1100,1200]
+  fives = [0, 50, 100, 500, 550, 600]
+  tripples = lambda {|x| x * 100}
+  # note2
+  counted = Hash.new(0)
+  
+  # note1
+  dice.each do |v|
+    counted[v] += 1
+  end
+
+
+  counted.each do |k,v|
+    if k == 0
+      points += 0 
+    elsif k == 1
+      points += ones[v]
+    elsif k == 5
+      points += fives[v] 
+    elsif v >= 3
+      points += tripples[k]
+    else 
+      points += 0 
+    end
+  end
+  points 
 end
+
 
 class AboutScoringProject < Neo::Koan
   def test_score_of_an_empty_list_is_zero
